@@ -1,0 +1,23 @@
+﻿@model Client_Tracker_MVC.Models.IClient
+<h2>Details for "@Html.Encode(Model.Name)"</h2>
+<fieldset>
+    <legend>Dinner Details</legend>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+        <dt>@Html.DisplayNameFor(model => model.MedsRequested)</dt>
+        <dd>@Html.DisplayFor(model => model.MedsRequested)</dd>
+        <dt>@Html.DisplayNameFor(model => model.MedsRequestPaid)</dt>
+        <dd>@Html.DisplayFor(model => model.MedsRequestPaid)</dd>
+        <dt>@Html.DisplayNameFor(model => model.MedsReceived)</dt>
+        <dd>@Html.DisplayFor(model => model.MedsReceived)</dd>
+        <dt>@Html.DisplayNameFor(model => model.ModifiedDate)</dt>
+        <dd>@Html.DisplayFor(model => model.ModifiedDate)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Notes)</dt>
+        <dd>@Html.DisplayFor(model => model.Notes)</dd>
+    </dl>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

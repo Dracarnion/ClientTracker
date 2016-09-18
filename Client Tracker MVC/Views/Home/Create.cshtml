@@ -1,0 +1,74 @@
+﻿@model Client_Tracker_MVC.Models.IClient
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<h2>Add a new Client</h2>
+<div class="row">
+    <div class="col-md-10">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Client List</legend>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="form-group">
+                    @Html.CheckBoxFor(model => model.MedsRequested)
+                    @Html.LabelFor(model => model.MedsRequested)
+                    @Html.ValidationMessageFor(model => model.MedsRequested)
+                </div>
+                <div class="form-group">
+                    @Html.CheckBoxFor(model => model.MedsRequestPaid)
+                    @Html.LabelFor(model => model.MedsRequestPaid)
+                    @Html.ValidationMessageFor(model => model.MedsRequestPaid)
+                </div>
+                <div class="form-group">
+                    @Html.CheckBoxFor(model => model.MedsReceived)
+                    @Html.LabelFor(model => model.MedsReceived)
+                    @Html.ValidationMessageFor(model => model.MedsReceived)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ModifiedDate)
+                    @Html.TextBoxFor(model => model.ModifiedDate, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ModifiedDate)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Notes)
+                    @Html.TextBoxFor(model => model.Notes, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Notes)
+                </div>
+                <p>
+                    <button type="submit" value="Create" class="btn btn-default">Create</button>
+                </p>
+            </fieldset>
+        }
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function() {
+        // fix date validation for chrome
+        jQuery.extend(jQuery.validator.methods, {
+            date: function (value, element) {
+                var isChrome = window.chrome;
+                // make correction for chrome
+                if (isChrome) {
+                    var d = new Date();
+                    return this.optional(element) ||
+					!/Invalid|NaN/.test(new Date(d.toLocaleDateString(value)));
+                }
+                    // leave default behavior
+                else {
+                    return this.optional(element) ||
+					!/Invalid|NaN/.test(new Date(value));
+                }
+            }
+        });
+    })
+</script>

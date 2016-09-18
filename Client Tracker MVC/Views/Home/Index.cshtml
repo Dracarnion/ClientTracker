@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Client_Tracker_MVC.Models.IClient>
+<h2>Client Tracker</h2>
+@{
+    if (@Model.Any())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedsRequested)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedsRequestPaid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedsReceived)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                var daysSinceUpdated = (DateTime.Now - DateTime.Parse(item.ModifiedDate));
+
+                if (daysSinceUpdated.TotalDays > 14)
+                {
+                    <tr style="background-color:pink">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsRequested)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsRequestPaid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsReceived)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+                else if (daysSinceUpdated.TotalDays > 7)
+                {
+                    <tr style="background-color:beige">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsRequested)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsRequestPaid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsReceived)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+                else
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsRequested)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsRequestPaid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MedsReceived)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+    else
+    {
+        <p>You have no clients!  Your business must totally be going well. Perhaps you would like to @Html.ActionLink("add one", "Create")?</p>
+    }
+}
