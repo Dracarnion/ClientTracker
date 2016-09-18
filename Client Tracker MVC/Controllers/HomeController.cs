@@ -63,10 +63,10 @@ namespace Client_Tracker_MVC.Controllers
         [HttpPost]
         public ActionResult Delete(string id, FormCollection collection)
         {
-            var dinner = _context.Clients.FirstOrDefault(d => d.Id.Equals(id));
-            if (dinner != null)
+            var client = _context.Clients.FirstOrDefault(d => d.Id.Equals(id));
+            if (client != null)
             {
-                _context.DeleteObject(dinner);
+                _context.DeleteObject(client);
                 _context.SaveChanges();
             }
             return RedirectToAction("Index");

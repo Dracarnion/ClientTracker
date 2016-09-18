@@ -1,24 +1,25 @@
 ﻿@model IEnumerable<Client_Tracker_MVC.Models.IClient>
-<h2>Client Tracker</h2>
+
+<img src="~/Images/Logo.png" id="logo" />
 @{
     if (@Model.Any())
     {
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    Client
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MedsRequested)
+                    Meds Requested
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MedsRequestPaid)
+                    Meds Request Paid
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MedsReceived)
+                    Meds Received
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                    Modified Date
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Notes)
