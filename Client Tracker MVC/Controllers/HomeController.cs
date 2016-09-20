@@ -11,7 +11,7 @@ namespace Client_Tracker_MVC.Controllers
 
         public ActionResult Index()
         {
-            var clients = _context.Clients.OrderBy(c => c.ModifiedDate);
+            var clients = _context.Clients;//.OrderBy(c => c.ModifiedDate);
 
             return View(clients);
         }
