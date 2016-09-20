@@ -1,7 +1,7 @@
 ﻿@model Client_Tracker_MVC.Models.IClient
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<h2>Edit Client Details</h2>
+
 <div class="row">
     <div class="col-md-10">
         @using (Html.BeginForm())
@@ -9,7 +9,6 @@
             @Html.ValidationSummary(true)
 
             <fieldset>
-                <legend>Client Details</legend>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Name)
                     @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
